@@ -1,0 +1,36 @@
+<div class="row">
+    <h4>Ajouter une devise</h4>
+</div>
+
+
+<div class="container">
+    <form #deviseForm="ngForm" (ngSubmit)="save()">
+
+        <div class="form-row">
+            <div class="form-group col-md-6 col-sm-12">
+                <label for="nom">Nom</label>
+                <input #nominput="ngModel" name="nom" type="text" [(ngModel)]="model.nom" class="form-control" id="nom" required>
+                <validation-messages [formCtrl]="nominput"></validation-messages>
+            </div>
+
+
+            <div class="form-group col-md-6 col-sm-12">
+                <label for="symbole">Symbole</label>
+                <input name="symbole" type="text" [(ngModel)]="model.symbole" class="form-control" id="symbole">
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="col-6 text-left">
+              <button (click)="backToList()" type="button" class="btn btn-outline-primary">Annuller</button>
+            </div>
+            <div class="col-6 text-right">
+                <button [ngStyle]="{'cursor':deviseForm.form.valid === true ? 'pointer' : 'not-allowed' }" [disabled]="!deviseForms.form.valid" type="submit" class="btn btn-primary">Enregistrer</button>
+        
+        
+            </div>
+        
+          </div>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-8">
+    <h4>{{title}}</h4>
+  </div>
+  <form #typeDepenseForm="ngForm" (ngSubmit)="save()">
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="nom">Nom</label>
+        <input #nominput="ngModel" name="nom" type="text" [(ngModel)]="model.nom" class="form-control" id="nom"
+          required>
+        <validation-messages [formCtrl]="nominput"></validation-messages>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="description">Description</label>
+        <textarea class="form-control" name="description" [(ngModel)]="model.description" id="description" cols="30"
+          rows="10"></textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-6 text-left">
+        <button (click)="backToList()" type="button" class="btn btn-outline-primary">Annuler</button>
+      </div>
+      <div class="col-6 text-right">
+        <button [ngStyle]="{'cursor':typeDepenseForm.form.valid === true ? 'pointer' : 'not-allowed' }"
+          [disabled]="!typeDepenseForm.form.valid" type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+
+    </div>
+  </form>
+</div>

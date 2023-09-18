@@ -1,0 +1,50 @@
+<div class="container content-container">
+  <div class="row">
+      <div class="col-12">
+      <div class="invoice-title">
+        <h2>Contrat</h2><h3 class="float-right"># {{model.sujet}} </h3>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-6">
+          <address>
+          <strong>Date Début:</strong><br>
+            {{model.dateDebut}}<br>
+          <strong>Date Fin:</strong><br>
+            {{model.dateFin}}<br>
+          <strong>Type Contrat:</strong><br>
+            {{model.typeContrat}}<br>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Detail Contrat</strong></h3>
+        </div>
+        <div class="panel-body">
+          {{model.description}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======================================================================================== -->

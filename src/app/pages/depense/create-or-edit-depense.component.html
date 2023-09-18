@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="col-8">
+    <h4>{{title}}</h4>
+  </div>
+  <form #depenseForm="ngForm" (ngSubmit)="save()">
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="nom">Nom</label>
+        <input name="nom" type="text" [(ngModel)]="model.nom" class="form-control" id="nom">
+      </div>
+      <div class="form-group col-md-6 col-sm-12">
+        <label for="dateDepense">Date Dépense</label>
+        <input name="date_depense" type="date" [(ngModel)]="model.dateDepense" class="form-control" id="dateDepense"
+          required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="montant">Montant</label>
+        <input name="montant" type="number" [(ngModel)]="model.montant" class="form-control" id="montant">
+      </div>
+      <div class="form-group col-md-6 col-sm-12">
+        <label for="devise">Devise</label><br>
+        <p-dropdown [options]="devise" name="deviseId" [(ngModel)]="selectedDevise"
+          [ngModelOptions]="{standalone: true}" [filter]="true" filterBy="value.nom,id" optionLabel="nom"
+          [required]="true" placeholder="selectionner une Devise">
+        </p-dropdown>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 col-sm-12">
+        <label for="type_Depense">Type de depense</label><br>
+        <!-- dropdown pour afficher les différent type de  -->
+        <p-dropdown [options]="typeDepense" name="typeDepenseId" [(ngModel)]="selectedTypeDepense"
+          [ngModelOptions]="{standalone: true}" [filter]="true" filterBy="value.nom,id" optionLabel="nom"
+          [required]="true" placeholder="selectionner un type de depense">
+        </p-dropdown>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 col-sm-12">
+        <label for="typePayement">Type de payement</label><br>
+        <p-dropdown [options]="typePayement" name="typePaiementId" [(ngModel)]="selectedTypePayement"
+          [ngModelOptions]="{standalone: true}" [filter]="true" filterBy="value.nom,id" optionLabel="nom"
+          [required]="true" placeholder="selectionner un type de payement">
+        </p-dropdown>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 col-sm-12">
+        <label for="description">Description</label>
+        <textarea #Descriptioninput="ngModel" name="description" [(ngModel)]="model.description" class="form-control"
+          id="description"  required></textarea>
+      </div>
+
+
+
+
+    </div>
+
+  <!-- </div> -->
+  <div class="form-row">
+    <div class="col-6 text-left">
+      <button (click)="backToList()" type="button" class="btn btn-outline-primary">Annuller</button>
+    </div>
+    <div class="col-6 text-right">
+      <button  [disabled]="!depenseForm.form.valid" type="submit" class="btn btn-primary ">Enregistrer</button>
+
+
+    </div>
+
+  </div>
+</form>
+</div>

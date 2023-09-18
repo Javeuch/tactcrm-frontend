@@ -1,0 +1,37 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()">TACTCRM</a>
+  </div>
+  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
+    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
+  </nb-select>
+</div>
+
+<div class="header-container">
+
+  <div *ngIf="!isAdmin">
+    <button class="btn btn-default btn-outline" [routerLink]="['dashboard']" routerLinkActive="router-link-active"><i class="fas fa-tachometer-alt"></i> Tableau de board </button>
+
+    <button class="btn btn-default btn-outline" [routerLink]="['factures/client/mes-factures']" routerLinkActive="router-link-active"><i class="far fa-file-alt"></i> Mes Factures </button>
+  
+    <button class="btn btn-default btn-outline" [routerLink]="['contrats/client/mes-contrats']" routerLinkActive="router-link-active"><i class="fas fa-file-contract"></i> Mes Contrats </button>
+  </div>
+
+  <nb-actions size="small">
+
+    <!-- <nb-action class="control-item">
+      <nb-search type="rotate-layout"></nb-search>
+    </nb-action> -->
+    
+    <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
+      <nb-user [nbContextMenu]="userMenu"
+               [onlyPicture]="userPictureOnly"
+               [name]="user?.nom + ' ' + user?.prenom"
+               >
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+</div>

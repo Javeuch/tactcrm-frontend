@@ -1,0 +1,24 @@
+
+Todo:
+✔ fix create or edit depense view @done(20-05-04 00:16)
+✔ fix pagination @done(20-05-04 01:30)
+✔ change user image with generic img of user or icon ix user name with the connected user @done(20-05-04 01:50)
+✔ fix create facture calculation on first deail facture save @done(20-05-04 01:55)
+✘ fix chart depense profit loading @cancelled(20-05-04 03:27)
+✔ fix searchs in dropDown tak example from utilisateur @done(20-05-04 11:09)
+✔ rename ecommerce component to dashboard @done(20-05-04 03:27)
+
+Hard Tasks:
+  ☐ fix deletion by rgression when entity used by another (transition)
+
+
+
+
+
+
+
+
+
+
+
+

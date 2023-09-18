@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="col-8">
+        <h4>{{title}}</h4>
+    </div>
+    <form #articleForm="ngForm" (ngSubmit)="save()">
+        <!-- id?:number;
+    designation:string;
+    prixVente:number;
+    taxe: ITaxe; -->
+        <div class="form-group  col-sm-12">
+            <label for="designation">Designation</label>
+            <input #deignationinput="ngModel" name="designation" type="text" [(ngModel)]="model.designation" class="form-control" id="designation" required>
+        </div>
+        <div class="form-group col-sm-12">
+            <label for="prixVente">Prix vente</label>
+            <input #prixventeinput="ngModel" class="form-control" name="prixVente" type="number" step="0.01" min="0" [(ngModel)]="model.prixVente" id="prixVente" required />
+        </div>
+        <div class="form-group col-sm-12">
+            <label for="prixVente">Taxe</label><br>
+
+            <p-dropdown #taxepicker [options]="taxes" name="taxeId" [(ngModel)]="selectedTaxe" [ngModelOptions]="{standalone: true}" [filter]="true" filterBy="label,value.nom,value.taux" optionLabel="nom" [required]="true" placeholder="Selectionner une taxe"></p-dropdown>
+        </div>
+
+        <div class="form-row">
+            <div class="col-6 text-left">
+                <button (click)="backToList()" type="button" class="btn btn-outline-primary">Annuler</button>
+            </div>
+            <div class="col-6 text-right">
+                <button [ngStyle]="{'cursor':articleForm.form.valid === true ? 'pointer' : 'not-allowed' }" [disabled]="!articleForm.form.valid" type="submit" class="btn btn-primary ">Enregistrer</button>
+
+            </div>
+
+        </div>
+    </form>
+</div>

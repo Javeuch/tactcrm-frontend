@@ -1,0 +1,118 @@
+<div class="container content-container">
+  <div class="row">
+      <div class="col-12">
+      <div class="invoice-title">
+        <h2>Facture</h2><h3 class="float-right"># {{model.numeroFacture}} </h3>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-6">
+          <address>
+          <strong>Facturé à:</strong><br>
+            {{model.utilisateurDTO.prenom}}<br>
+            {{model.clientAdressDTO.localite}}<br>
+            {{model.clientAdressDTO.rue}}<br>
+            {{model.clientAdressDTO.ville}}
+          </address>
+        </div>
+        <div class="col-6 text-right">
+          <address>
+            <strong>Expédiés à:</strong><br>
+            {{model.utilisateurDTO.prenom}}<br>
+            {{model.clientAdressDTO.localite}}<br>
+            {{model.clientAdressDTO.rue}}<br>
+            {{model.clientAdressDTO.ville}}
+          </address>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <address>
+            <strong>Method de Payment:</strong><br>
+            {{model.typePaiementDTO.nom}}<br>
+            {{model.utilisateurDTO.email}}
+          </address>
+        </div>
+        <div class="col-6 text-right">
+          <address>
+            <strong>Date facturation:</strong><br>
+            {{model.dateFacturation | date: 'dd-MM-yyyy'}}<br><br>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Detail Facture</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <thead>
+                              <tr>
+                    <td><strong>Item</strong></td>
+                    <td class="text-center"><strong>Price</strong></td>
+                    <td class="text-center"><strong>Quantity</strong></td>
+                    <td class="text-center"><strong>Taxes</strong></td>
+                    <td class="text-right"><strong>Total HT</strong></td>
+                              </tr>
+              </thead>
+              <tbody *ngFor="let item of detailsFacturesList">
+                <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                <tr>
+                  <td>{{item.articleDesignation}}</td>
+                  <td class="text-center">{{model.deviseDTO.symbole}} {{item.prixFactureHt | number : '1.2-2' }}</td>
+                  <td class="text-center">{{item.quantite}}</td>
+                  <td class="text-center">{{item.taxeDto.nom}} - ({{item.taxeDto.taux}}%) </td>
+                  <td class="text-right">{{model.deviseDTO.symbole}} {{item.prixFactureHt * item.quantite | number : '1.2-2'}} </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center"><strong>TOTAL HT:</strong></td>
+                      <td class="no-line text-right">{{model.deviseDTO.symbole}} {{factureResult.totalHt | number : '1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center"><strong>TOTAL TAXES:</strong></td>
+                      <td class="no-line text-right">{{model.deviseDTO.symbole}} {{factureResult.totalTaxes | number : '1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center"><strong>TOTAL TTC:</strong></td>
+                      <td class="no-line text-right">{{model.deviseDTO.symbole}} {{factureResult.totalTtc | number : '1.2-2'}}</td>
+                    </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======================================================================================== -->

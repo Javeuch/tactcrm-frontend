@@ -1,0 +1,98 @@
+<div class="row">
+  <h4>Ajouter un Utilisateur</h4>
+</div>
+<div class="container">
+  <form #utilisateurForm="ngForm" (ngSubmit)="save()">
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="nom">Nom</label>
+        <input #nominput="ngModel" name="nom" type="text" [(ngModel)]="model.nom" class="form-control" id="nom"
+          required>
+        <validation-messages [formCtrl]="nominput"></validation-messages>
+      </div>
+      <div class="form-group col-6">
+        <label for="prenom">Prenom</label>
+        <input #prenominput="ngModel" name="prenom" type="text" [(ngModel)]="model.prenom" class="form-control"
+          id="prenom" required>
+        <validation-messages [formCtrl]="prenominput"></validation-messages>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="telephone">Adresse</label>
+      <div class="form-row">
+        <div class="form-group col-md-4 col-sm-6">
+          <input placeholder="rue" name="rue" type="text" [(ngModel)]="model.adresse.rue" class="form-control col"
+            id="rue">
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+          <input placeholder="ville" name="ville" type="text" [(ngModel)]="model.adresse.ville" class="form-control col"
+            id="ville">
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+          <input placeholder="pays" name="pays" type="text" [(ngModel)]="model.adresse.pays" class="form-control col"
+            id="pays">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="telephone">Telephone</label>
+        <input name="adresse" type="text" [(ngModel)]="model.telephone" class="form-control" id="telephone">
+      </div>
+      <div class="form-group col">
+        <label for="prenom">Email</label>
+        <input #emailadressinput="ngModel" name="email" type="text" [(ngModel)]="model.email" class="form-control"
+          id="email" pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" required>
+        <validation-messages [formCtrl]="emailadressinput"></validation-messages>
+      </div>
+    </div>
+    <div class="form-row">
+      <!-- <div class="form-group col-md-6 col-sm-12">
+        <label for="prixVente">Specialité</label><br>
+        <p-dropdown
+          [options]="specialite" name="specialiteid"
+
+          [(ngModel)]="selectedSpecialite"
+
+          [ngModelOptions]="{standalone: true}"
+
+          [filter]="true"
+
+          filterBy="value.nom,id"
+
+          optionLabel="nom"
+
+          [required]="true" placeholder="selectionner une Specialité"
+
+          #specialiteinput="ngModel" >
+        </p-dropdown>
+        <validation-messages [formCtrl]="specialiteinput"></validation-messages>
+      </div> -->
+      <div class="form-group  col-md-6 col-sm-12">
+        <label for="prenom">Login</label>
+        <input name="login" type="text" [(ngModel)]="model.login" class="form-control" id="login">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group  col-md-6 col-sm-12 ">
+        <label for="prenom">Mot de passe</label>
+        <input name="password" type="password" [(ngModel)]="model.password" class="form-control" id="password">
+      </div>
+      <div class="form-group col-md-6 col-sm-12">
+        <label for="confirmpassword">Confirmer Mot de passe</label>
+        <input name="confirmpassword" type="password" class="form-control" id="confirmpassword">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-6 text-left">
+        <button (click)="backToList()" type="button" class="btn btn-outline-primary">Annuler</button>
+      </div>
+      <div class="col-6 text-right">
+        <button [ngStyle]="{'cursor':utilisateurForm.form.valid === true ? 'pointer' : 'not-allowed' }"
+      [disabled]="!utilisateurForm.form.valid" type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+    </div>
+
+  </form>
+</div>
